@@ -7,6 +7,8 @@ export function baseOptions(): BaseLayoutProps {
       // JSX supported
       title: appName,
     },
+    // Southbag is a dark-only institution — no theme switch.
+    themeSwitch: { enabled: false },
     githubUrl: `https://github.com/${gitConfig.user}/${gitConfig.repo}`,
   };
 }

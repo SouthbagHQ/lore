@@ -2,11 +2,243 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+/* ─────────────────────────────────────────────────────────────
+   Southbag institutional theme
+   Palette + typography lifted from southbag.cc, mapped onto the
+   Fumadocs design tokens. Dark-only, sharp corners, serif display.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Core backgrounds */
+  --sb-bg: #050608;
+  --sb-surface: #08090d;
+  --sb-card: #0c0e13;
+  --sb-card-hover: #101318;
+  --sb-panel: #0a0c10;
+
+  /* Borders */
+  --sb-border: #1a1e26;
+  --sb-border-hover: #28303e;
+  --sb-border-active: #363f52;
+
+  /* Text */
+  --sb-heading: #e6eaf0;
+  --sb-text: #c0c6d0;
+  --sb-text-dim: #6a7480;
+  --sb-text-dimmer: #3c434c;
+
+  /* Accent (institutional blue) */
+  --sb-accent-bg: #1a4280;
+  --sb-accent-border: #254e96;
+  --sb-accent-text: #5580c8;
+
+  /* Typography */
+  --font-display: var(--font-sb-display), 'Georgia', serif;
+  --font-mono: var(--font-sb-mono), 'Courier New', monospace;
+  --font-sans: var(--font-sb-sans), system-ui, sans-serif;
+}
+
+/* Map the Southbag palette onto Fumadocs tokens (dark-only) */
+:root,
+.dark {
+  --color-fd-background: var(--sb-bg);
+  --color-fd-foreground: var(--sb-text);
+  --color-fd-muted: var(--sb-card);
+  --color-fd-muted-foreground: var(--sb-text-dim);
+  --color-fd-popover: var(--sb-panel);
+  --color-fd-popover-foreground: var(--sb-text);
+  --color-fd-card: var(--sb-card);
+  --color-fd-card-foreground: var(--sb-heading);
+  --color-fd-border: var(--sb-border);
+  --color-fd-primary: var(--sb-accent-text);
+  --color-fd-primary-foreground: #c0d4f0;
+  --color-fd-secondary: var(--sb-card);
+  --color-fd-secondary-foreground: var(--sb-text);
+  --color-fd-accent: var(--sb-card-hover);
+  --color-fd-accent-foreground: var(--sb-heading);
+  --color-fd-ring: var(--sb-accent-border);
+  --color-fd-overlay: rgba(0, 0, 0, 0.55);
+
+  --color-fd-info: #5580c8;
+  --color-fd-warning: #906c1a;
+  --color-fd-error: #8c2424;
+  --color-fd-success: #46882c;
+}
+
+/* Nav bar + sidebar sit on the slightly raised surface tone */
+:root {
+  --color-fd-nav-background: var(--sb-surface);
+}
+
 html {
   scrollbar-gutter: stable;
+  background: var(--sb-bg);
+  color: var(--sb-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html > body[data-scroll-locked] {
   margin-right: 0px !important;
   --removed-body-scroll-bar-size: 0px !important;
+}
+
+body {
+  background: var(--sb-bg);
+}
+
+/* ─── Sharp corners everywhere (Southbag signature) ─── */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* ─── Nav / sidebar surface tone ─── */
+#nd-nav,
+#nd-subnav,
+#nd-sidebar,
+#nd-tocnav {
+  background-color: var(--sb-surface);
+}
+
+#nd-sidebar {
+  border-right: 1px solid var(--sb-border);
+}
+
+/* ─── Brand wordmark: mono, tracked-out, institutional ─── */
+#nd-nav a[href='/'],
+#nd-sidebar a[href='/'] {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sb-heading);
+}
+
+/* ─── Serif display headings (Cormorant Garamond) ─── */
+h1,
+h2,
+h3,
+.prose h1,
+.prose h2,
+.prose h3,
+[data-title],
+[class*='DocsTitle'] {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--sb-heading);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.prose h1 {
+  font-weight: 300;
+  font-size: 2.6rem;
+}
+
+.prose h2 {
+  font-size: 1.9rem;
+}
+
+.prose h3 {
+  font-size: 1.45rem;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-family: var(--font-sans);
+  color: var(--sb-heading);
+}
+
+/* ─── Prose body + links ─── */
+.prose {
+  --tw-prose-body: var(--sb-text-dim);
+  color: var(--sb-text-dim);
+}
+
+.prose p,
+.prose li {
+  color: var(--sb-text-dim);
+}
+
+.prose strong {
+  color: var(--sb-text);
+  font-weight: 500;
+}
+
+.prose a {
+  color: var(--sb-accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  color: #c0d4f0;
+}
+
+/* Heading anchor links keep the serif heading treatment, not link-blue */
+.prose h1 a,
+.prose h2 a,
+.prose h3 a,
+.prose h4 a,
+.prose h5 a,
+.prose h6 a {
+  color: var(--sb-heading);
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+/* ─── Mono for code, kbd, and UI labels ─── */
+code,
+kbd,
+pre,
+.prose code {
+  font-family: var(--font-mono);
+}
+
+.prose :not(pre) > code {
+  color: var(--sb-accent-text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--sb-border);
+  padding: 1px 5px;
+  font-weight: 400;
+}
+
+.prose pre {
+  background: var(--sb-panel) !important;
+  border: 1px solid var(--sb-border);
+}
+
+/* ─── Blockquotes: institutional left rule ─── */
+.prose blockquote {
+  border-left: 2px solid var(--sb-accent-border);
+  background: rgba(26, 66, 128, 0.08);
+  color: var(--sb-text-dim);
+  font-style: normal;
+}
+
+/* ─── Tables: mono ledger styling ─── */
+.prose table {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.prose th {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--sb-text-dimmer);
+}
+
+/* ─── TOC / sidebar links: quiet, mono-tracked ─── */
+#nd-tocnav a,
+#nd-sidebar a {
+  letter-spacing: 0.01em;
 }
