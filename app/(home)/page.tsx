@@ -4,22 +4,22 @@ const entries = [
   {
     title: 'Kevin',
     href: '/docs/Kevin',
-    blurb: 'CEO, policy, atmosphere, and an ongoing administrative concern.',
+    blurb: 'The CEO.',
   },
   {
     title: 'The Pile',
     href: '/docs/the-pile',
-    blurb: 'Reviewed. Not removed. Do not ask whether it is physical.',
+    blurb: 'Maintained by Kevin. Purpose unclear.',
   },
   {
     title: 'Floor 3',
     href: '/docs/floor-3',
-    blurb: 'Does not exist. The lift button is a manufacturing error.',
+    blurb: 'Southbag has no Floor 3.',
   },
   {
     title: 'Canberra',
     href: '/docs/canberra',
-    blurb: 'Registered under protest. The lake knows what it did.',
+    blurb: "Kevin's position on Canberra.",
   },
 ] as const;
 
@@ -49,25 +49,24 @@ export default function HomePage() {
             Southbag Lore
           </p>
           <h1 className="mb-5 font-[family-name:var(--font-display)] text-4xl font-light leading-[1.1] tracking-[-0.02em] text-[var(--sb-heading)] sm:text-5xl">
-            The institutional record
+            Southbag Lore
           </h1>
           <p className="mb-10 max-w-xl text-base leading-relaxed text-[var(--sb-text-dim)] sm:text-[15px]">
-            Documented observations, unresolved incidents, and material Kevin has
-            neither confirmed nor denied. Read carefully. Do not ask
-            classification questions.
+            Documentation of people, places, objects, and incidents associated
+            with the institution.
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/docs"
               className="inline-flex items-center border border-[var(--sb-accent-border)] bg-[var(--sb-accent-bg)] px-5 py-2.5 font-[family-name:var(--font-mono)] text-[11px] font-medium uppercase tracking-[0.16em] text-[#c0d4f0] transition-colors hover:border-[var(--sb-accent-text)] hover:bg-[#1f4d96]"
             >
-              Enter the archive
+              View documentation
             </Link>
             <Link
               href="/docs/Kevin"
               className="inline-flex items-center font-[family-name:var(--font-mono)] text-[11px] font-medium uppercase tracking-[0.16em] text-[var(--sb-text-dim)] underline decoration-[var(--sb-border)] underline-offset-4 transition-colors hover:text-[var(--sb-heading)] hover:decoration-[var(--sb-accent-text)]"
             >
-              Start with Kevin
+              Kevin
             </Link>
           </div>
         </div>
@@ -75,7 +74,7 @@ export default function HomePage() {
 
       <section className="mx-auto w-full max-w-3xl px-6 py-16">
         <p className="mb-8 font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--sb-text-dimmer)]">
-          Indexed entries
+          Entries
         </p>
         <ul className="divide-y divide-[var(--sb-border)] border-y border-[var(--sb-border)]">
           {entries.map((entry) => (
@@ -95,14 +94,14 @@ export default function HomePage() {
           ))}
         </ul>
         <p className="mt-8 text-sm text-[var(--sb-text-dimmer)]">
-          Further material is filed under{' '}
+          Additional entries are available under{' '}
           <Link
             href="/docs"
             className="text-[var(--sb-accent-text)] underline underline-offset-2 hover:text-[#c0d4f0]"
           >
             /docs
           </Link>
-          . Completeness is not guaranteed.
+          .
         </p>
       </section>
     </main>
