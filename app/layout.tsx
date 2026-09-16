@@ -1,5 +1,7 @@
 import { IBM_Plex_Sans, IBM_Plex_Mono, Cormorant_Garamond } from 'next/font/google';
 import { Provider } from '@/components/provider';
+import { PalantirEvents } from '@/components/palantir-events';
+import Script from 'next/script';
 import './global.css';
 
 const sans = IBM_Plex_Sans({
@@ -29,6 +31,9 @@ export default function Layout({ children }: LayoutProps<'/'>) {
       suppressHydrationWarning
     >
       <body className="flex flex-col min-h-screen">
+        {/* Palantir: Southbag's shared PostHog wiring (see public/palantir.js). */}
+        <Script src="/palantir.js" strategy="afterInteractive" data-app="lore" />
+        <PalantirEvents />
         <Provider>{children}</Provider>
       </body>
     </html>
