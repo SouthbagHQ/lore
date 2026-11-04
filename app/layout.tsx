@@ -32,7 +32,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
     >
       <body className="flex flex-col min-h-screen">
         {/* Palantir: Southbag's shared PostHog wiring (see public/palantir.js). */}
-        <Script src="/palantir.js" strategy="afterInteractive" data-app="lore" />
+        <Script src="https://cdn.jsdelivr.net/gh/southbag-agent/southbag.js@2d7e33e06c2956360133a6610feda966016e7246/southbag.js" strategy="afterInteractive" data-app="lore" />
         <PalantirEvents />
         <Provider>{children}</Provider>
       </body>
